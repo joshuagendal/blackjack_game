@@ -11,9 +11,9 @@ blackjack_winners = []
 busters = []
 dealer_bust_dummy = 0
 
-print 'Hello and welcome to a game of BlackJack!'
-num_players = int(raw_input('Please enter the number of players (User will control all players except Dealer) '))
-
+# print 'Hello and welcome to a game of BlackJack!'
+# num_players = int(raw_input('Please enter the number of players (User will control all players except Dealer) '))
+number_of_players = 2
                                         # This first adds the correct number of lists
 def initial_deal_cards(number_of_players):               # you will need depending on how many players are chosen by the user
     for i in range(num_players):
@@ -22,7 +22,7 @@ def initial_deal_cards(number_of_players):               # you will need dependi
         for h in players_cards:
             h.append(choice(cards))
         dealers_cards.append(choice(cards))
-    print players_cards
+    return players_cards
 
 
 
@@ -35,7 +35,7 @@ def check_aces_players(players_cards):
             # players_cards.pop(i)
         elif 1 in players_cards[i] and (17 <= (sum(players_cards[i]) + 10) <= 20 ):
             players_cards[i].append(10)
-    return players_cards        
+    return players_cards
 
 
 def check_aces_dealer(dealers_cards):
@@ -47,6 +47,7 @@ def check_aces_dealer(dealers_cards):
         elif sum(dealers_cards) + 10 == 21:
             dealers_cards.append(10)
             print "DEALER GOT BLACKJACK!"
+    return dealers_cards
 
 
 def check_player_cards():
@@ -144,9 +145,9 @@ def compare(players_cards, dealers_cards):
 
 
 
-initial_deal_cards(num_players)
-check_aces_players(players_cards)
-hit_or_stick(players_cards)
-check_aces_dealer(dealers_cards) #Check aces first because if dealer has between 17 and 21 there is no need to coninue
-deal_dealer()
-compare(players_cards, dealers_cards)
+# initial_deal_cards(num_players)
+# check_aces_players(players_cards)
+# hit_or_stick(players_cards)
+# check_aces_dealer(dealers_cards) #Check aces first because if dealer has between 17 and 21 there is no need to coninue
+# deal_dealer()
+# compare(players_cards, dealers_cards)
