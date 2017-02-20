@@ -27,7 +27,7 @@ def initial_deal_cards(number_of_players):               # you will need dependi
 
 
 # def check_aces_players():
-def check_aces_players(cards):
+def check_aces_players(players_cards):
     for i in range(len(players_cards)):
         if 1 in players_cards[i] and ((sum(players_cards[i]) + 10) == 21):
             players_cards[i].append(10)
@@ -35,6 +35,7 @@ def check_aces_players(cards):
             # players_cards.pop(i)
         elif 1 in players_cards[i] and (17 <= (sum(players_cards[i]) + 10) <= 20 ):
             players_cards[i].append(10)
+    return players_cards        
 
 
 def check_aces_dealer(dealers_cards):
