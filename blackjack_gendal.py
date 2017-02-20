@@ -33,7 +33,7 @@ def check_aces_players(cards):
             players_cards[i].append(10)
             blackjack_winners.append([i, players_cards[i]])
             # players_cards.pop(i)
-        if 1 in players_cards[i] and (17 <= (sum(players_cards[i]) + 10) <= 20 ):
+        elif 1 in players_cards[i] and (17 <= (sum(players_cards[i]) + 10) <= 20 ):
             players_cards[i].append(10)
 
 
@@ -107,13 +107,13 @@ def deal_dealer():
             print 'Dealer has {} and a total of {}'.format(dealers_cards, sum(dealers_cards))
             if sum(dealers_cards) < 17:
                 dealers_cards.append(choice(cards))
-            if 17 <= sum(dealers_cards) <= 20:
+            elif 17 <= sum(dealers_cards) <= 20:
                 print 'Dealer finished with {} and a total of {}'.format(dealers_cards, sum(dealers_cards))
                 active = False
-            if sum(dealers_cards) == 21:
+            elif sum(dealers_cards) == 21:
                 print 'Dealer got BLACKJACK!'
                 active = False
-            if sum(dealers_cards) > 21:
+            elif sum(dealers_cards) > 21:
                 print 'Dealer BUSTS! with {}'.format(dealers_cards)
                 # dealers_cards.append('bust')
                 dealers_cards.append(0)
