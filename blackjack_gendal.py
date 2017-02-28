@@ -8,9 +8,6 @@ cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king]
 players_cards = []
 dealers_cards = []
 blackjack_winners = []
-busters = []
-dealer_bust_dummy = 0
-
 # print 'Hello and welcome to a game of BlackJack!'
 # num_players = int(raw_input('Please enter the number of players (User will control all players except Dealer) '))
 number_of_players = 2
