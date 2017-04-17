@@ -14,25 +14,22 @@ dealer_bust_dummy = 0
 print 'Hello and welcome to a game of BlackJack!'
 num_players = int(raw_input('Please enter the number of players (User will control all players except Dealer) '))
 
-                                        # This first adds the correct number of lists
-def initial_deal_cards(number_of_players):               # you will need depending on how many players are chosen by the user
-    for i in range(num_players):
+
+def initial_deal_cards(number_of_players):              # This first adds the correct number of lists
+    for i in range(num_players):                        # you will need depending on how many players are chosen by the user
         players_cards.append([])
-    for j in range(2):             # This adds 2 random cards to each player
+    for j in range(2):                                  # This adds 2 random cards to each player
         for h in players_cards:
             h.append(choice(cards))
         dealers_cards.append(choice(cards))
     print players_cards
 
 
-
-# def check_aces_players():
 def check_aces_players(cards):
     for i in range(len(players_cards)):
         if 1 in players_cards[i] and ((sum(players_cards[i]) + 10) == 21):
             players_cards[i].append(10)
             blackjack_winners.append([i, players_cards[i]])
-            # players_cards.pop(i)
         elif 1 in players_cards[i] and (17 <= (sum(players_cards[i]) + 10) <= 20 ):
             players_cards[i].append(10)
 
@@ -54,11 +51,9 @@ def check_player_cards():
             print 'Player {} GOT BLACKJACK!'.format(i)
         elif sum(players_cards[i]) > 21:
             print 'Player {} BUSTS'.format(i)
-        # else:
-        #     print 'Player {} has a {}'.format(i, sum(players_cards[i]))                  # Use range here to eliminate possibilities of
-                                                                                        # two players having same hand and removing wrong player- use index to
+
 def check_dealer_cards():
-    if sum(dealers_cards) == 21:                                                        # instead of remove (which can lead to said problems)
+    if sum(dealers_cards) == 21:
         print 'DEALER GOT BLACKJACK'
     elif d_total > 21:
         print 'DEALER BUSTS'
@@ -67,7 +62,7 @@ def check_dealer_cards():
     else:
         print 'Dealer has a {}'.format(sum(dealers_cards))
 
-def hit_or_stick(players_cards):   # players w/ blackjack with first two cards have already been removed from [players]
+def hit_or_stick(players_cards):   # Players who got blackjack (21) with the first two cards have already been removed from [players_cards] list.
     for i in range(len(players_cards)):
         active = True
         while active == True:
@@ -79,7 +74,7 @@ def hit_or_stick(players_cards):   # players w/ blackjack with first two cards h
                 if h_or_s == 'hit':
                     players_cards[i].append(choice(cards))
                     print 'You received a {} for a total of {}'.format(players_cards[i][-1], sum(players_cards[i]))
-                    if players_cards[i][-1] == 1 and (17 <= (sum(players_cards[i]) + 10) <= 21):          #first check to see if last element appended was an ace and if that would give player sum between 17 and 21
+                    if 1 in players_cards[i] and (17 <= (sum(players_cards[i]) + 10) <= 21):          #first check to see if last element appended was an ace and if that would give player sum between 17 and 21
                         players_cards[i].append(10)
                     elif sum(players_cards[i]) == 21:
                         print 'PLAYER {} GOT BLACKJACK!'.format(i)
@@ -94,10 +89,6 @@ def hit_or_stick(players_cards):   # players w/ blackjack with first two cards h
                 else:
                     print 'Player {} finishes with a {}'.format(i, sum(players_cards[i]))
                     active = False
-                                    # if 'fin' in players_cards[i]:
-                                    #     pass
-                                    # else:
-                                    # if sum(players_cards[i]) < 21:
 def deal_dealer():
     active = True
     if 0 in dealers_cards:
@@ -115,7 +106,6 @@ def deal_dealer():
                 active = False
             elif sum(dealers_cards) > 21:
                 print 'Dealer BUSTS! with {}'.format(dealers_cards)
-                # dealers_cards.append('bust')
                 dealers_cards.append(0)
                 active = False
 
@@ -128,10 +118,6 @@ def compare(players_cards, dealers_cards):
                 print 'Player {} beat the Dealer. Player had {}, a total of {}; and Dealer had {}, a total of {}. '.format(i, i, sum(players_cards[i]), dealers_cards, sum(dealers_cards))
             elif sum(players_cards[i]) == sum(dealers_cards):
                 print 'Dealer and Player {} DRAW'.format(i)
-            # elif sum(players_cards[i]) > 21 and sum(dealers_cards) > 21:
-            #     print 'Dealer and Player {} both BUST so its a DRAW'.format(i)
-            # elif sum(players_cards[i]) > 21 and sum(dealers_cards) <= 21:
-            #     print 'Player {} BUSTS and Dealer does not so Player {} LOSES'.format(i, i)
             elif sum(players_cards[i]) == 21 and sum(dealers_cards) == 21:
                 print 'Player {} and the Dealer both got BLACKJACK, so Player {} wins'.format(i, i)
         else:
